@@ -19,7 +19,19 @@ type IProps = {
     setCart: React.Dispatch<React.SetStateAction<Props[] | null>>;
 };
 
-const Product: React.FC<IProps> = ({ product }) => {
+const Product: React.FC<IProps> = ({ product, cart, setCart }) => {
+    const renderStars = (product: Props) => {
+        const stars: any = [];
+        for (let i = 0; i < product.ratings; i++) {
+            stars.push("⭐");
+        }
+        return stars;
+    };
+
+    const addToCart = (product: Props) => {
+        setCart((prevCart) => [...prevCart!, product]);
+    };
+
     return (
         <div className="grid-container">
             <div className="card">
@@ -39,12 +51,14 @@ const Product: React.FC<IProps> = ({ product }) => {
                         <p className="fast-delivery">Fast delivery </p>
                     ) : (
                         <p className="fast-delivery">
-                            <b>No</b> Fast delivery{" "}
+                            <b>No</b> Fast delivery
                         </p>
                     )}
-                    <p className="rating">{product.ratings}</p>
+                    <p className="rating">{renderStars(product)}</p>
                 </div>
-                <Button variant="contained">Add to cart</Button>
+                <Button onClick={() => addToCart(product)} variant="contained">
+                    Add to cart
+                </Button>
             </div>
         </div>
     );

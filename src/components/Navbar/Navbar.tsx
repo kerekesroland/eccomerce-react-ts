@@ -41,7 +41,7 @@ const Navbar = () => {
                     <input type="text" placeholder="Search product" />
                 </li>
                 <li className="nav-item">
-                    <Link to="/">
+                    <Link to="/cart">
                         <IconButton aria-label="cart">
                             <Badge badgeContent={cart.length} color="error">
                                 <ShoppingCartIcon />
