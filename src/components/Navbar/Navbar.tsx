@@ -1,5 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { useContext } from "react";
+import { Context } from "../../context/ProductContext";
 import Badge, { BadgeProps } from "@mui/material/Badge";
 import { styled } from "@mui/material/styles";
 import IconButton from "@mui/material/IconButton";
@@ -26,6 +28,7 @@ export function CustomizedBadges() {
 }
 
 const Navbar = () => {
+    const { cart }: any = useContext(Context);
     return (
         <nav className="nav-container">
             <ul className="nav-items">
@@ -40,7 +43,7 @@ const Navbar = () => {
                 <li className="nav-item">
                     <Link to="/">
                         <IconButton aria-label="cart">
-                            <Badge badgeContent={4} color="error">
+                            <Badge badgeContent={cart.length} color="error">
                                 <ShoppingCartIcon />
                             </Badge>
                         </IconButton>
