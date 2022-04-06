@@ -11,10 +11,26 @@ type Props = {
         fastDelivery: boolean;
         ratings: number;
         quantity: number;
+        isAdded: boolean;
     };
 };
 
-const CartItem: React.FC<Props> = ({ cartItem }) => {
+type IProps = {
+    cartItem: Props["cartItem"];
+    product: Props["cartItem"];
+    products: Props[] | null;
+    setProducts: React.Dispatch<React.SetStateAction<Props[] | null>>;
+    cart: Props[] | null;
+    setCart: React.Dispatch<React.SetStateAction<Props[] | null>>;
+    addToCart: (product: Props) => void;
+    removeFromCart: (product: Props) => void;
+};
+
+const CartItem: React.FC<IProps> = ({
+    cartItem,
+    addToCart,
+    removeFromCart,
+}) => {
     return (
         <>
             <div className="container">

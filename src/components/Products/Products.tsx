@@ -2,7 +2,14 @@ import React, { useContext } from "react";
 import { Context } from "../../context/ProductContext";
 import Product from "../Product/Product";
 const Products = () => {
-    const { products, setProducts, cart, setCart }: any = useContext(Context);
+    const {
+        products,
+        setProducts,
+        cart,
+        setCart,
+        addToCart,
+        removeFromCart,
+    }: any = useContext(Context);
     type product = {
         id: string;
         name: string;
@@ -12,12 +19,15 @@ const Products = () => {
         fastDelivery: boolean;
         ratings: number;
         quantity: number;
+        isAdded: boolean;
     };
 
     return (
         <div className="grid-container">
             {products.map((product: product) => (
                 <Product
+                    addToCart={addToCart}
+                    removeFromCart={removeFromCart}
                     key={product.id}
                     products={products}
                     product={product}

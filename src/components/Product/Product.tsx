@@ -10,6 +10,7 @@ type Props = {
     fastDelivery: boolean;
     ratings: number;
     quantity: number;
+    isAdded: boolean;
 };
 
 type IProps = {
@@ -18,30 +19,17 @@ type IProps = {
     setProducts: React.Dispatch<React.SetStateAction<Props[] | null>>;
     cart: Props[] | null;
     setCart: React.Dispatch<React.SetStateAction<Props[] | null>>;
+    addToCart: (product: Props) => void;
+    removeFromCart: (product: Props) => void;
 };
 
-const Product: React.FC<IProps> = ({ product, cart, setCart }) => {
+const Product: React.FC<IProps> = ({ product, addToCart, removeFromCart }) => {
     const renderStars = (product: Props) => {
         const stars: any = [];
         for (let i = 0; i < product.ratings; i++) {
             stars.push("⭐");
         }
         return stars;
-    };
-
-    const addToCart = (product: Props) => {
-        const item = cart?.find((i) => i.id === product.id);
-        if (item) {
-            setCart(
-                cart!.map((i) =>
-                    i.id === product.id
-                        ? { ...item, quantity: item.quantity + 1 }
-                        : i
-                )
-            );
-        } else {
-            setCart([...cart!, { ...product, quantity: 1 }]);
-        }
     };
 
     return (
@@ -68,9 +56,22 @@ const Product: React.FC<IProps> = ({ product, cart, setCart }) => {
                     )}
                     <p className="rating">{renderStars(product)}</p>
                 </div>
-                <Button onClick={() => addToCart(product)} variant="contained">
-                    Add to cart
-                </Button>
+                {product.isAdded === false ? (
+                    <Button
+                        onClick={() => addToCart(product)}
+                        variant="contained"
+                    >
+                        Add to cart
+                    </Button>
+                ) : (
+                    <Button
+                        onClick={() => removeFromCart(product)}
+                        variant="contained"
+                        color="error"
+                    >
+                        Remove From Cart
+                    </Button>
+                )}
             </div>
         </div>
     );
