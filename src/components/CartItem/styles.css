@@ -26,6 +26,7 @@
 
 .title {
     font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
 }
 
 .details-container {
@@ -38,18 +39,24 @@
     flex-direction: row;
 }
 
-.in-stock {
+.cart-in-stock {
     color: green;
     font: 1em sans-serif;
     margin-top: 2px;
     padding-left: 3px;
 }
 
-.out-of-stock {
+.cart-out-of-stock {
     color: red;
     margin-top: 2px;
     font: 1em sans-serif;
     padding-left: 3px;
+}
+
+.price {
+    font-family: "Poppins", sans-serif;
+    margin-top: 2px;
+    margin-left: 3px;
 }
 
 .buttons {

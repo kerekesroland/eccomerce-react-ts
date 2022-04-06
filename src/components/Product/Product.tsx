@@ -47,6 +47,7 @@ const Product: React.FC<IProps> = ({ product, addToCart, removeFromCart }) => {
                     <p className="subtitle">
                         {parseInt(product.price).toFixed(0)} $
                     </p>
+
                     {product.fastDelivery ? (
                         <p className="fast-delivery">Fast delivery </p>
                     ) : (
@@ -54,10 +55,22 @@ const Product: React.FC<IProps> = ({ product, addToCart, removeFromCart }) => {
                             <b>No</b> Fast delivery
                         </p>
                     )}
+                    {product.inStock ? (
+                        <p className="product-in-stock">In Stock </p>
+                    ) : (
+                        <p className="product-out-of-stock">
+                            <b>Not</b> In Stock
+                        </p>
+                    )}
+
                     <p className="rating">{renderStars(product)}</p>
                 </div>
 
-                <Button onClick={() => addToCart(product)} variant="contained">
+                <Button
+                    style={{ position: "relative", top: "3px" }}
+                    onClick={() => addToCart(product)}
+                    variant="contained"
+                >
                     Add to cart
                 </Button>
             </div>

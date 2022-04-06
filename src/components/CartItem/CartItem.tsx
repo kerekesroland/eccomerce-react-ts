@@ -49,9 +49,11 @@ const CartItem: React.FC<IProps> = ({
                     <div className="details-container">
                         <span className="price">${cartItem.price} | </span>
                         {cartItem.inStock > 0 ? (
-                            <span className="in-stock">In Stock</span>
+                            <span className="cart-in-stock">In Stock</span>
                         ) : (
-                            <span className="out-of-stock">Out of Stock</span>
+                            <span className="cart-out-of-stock">
+                                Out of Stock
+                            </span>
                         )}
                     </div>
                 </div>

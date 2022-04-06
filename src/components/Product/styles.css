@@ -34,7 +34,7 @@
     font-size: 1rem;
     font-weight: bold;
     color: #333;
-    padding-bottom: 1rem;
+    padding-bottom: 0.25rem;
     padding-top: 0.5rem;
     font-family: "Poppins", sans-serif;
 }
@@ -48,4 +48,18 @@
     padding-top: 0.25rem;
     font-family: "Poppins", sans-serif;
     padding-bottom: 0.5rem;
+}
+
+.product-in-stock {
+    color: green;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 5px;
+    font-weight: 500;
+}
+
+.product-out-of-stock {
+    color: red;
+    font-family: "Poppins", sans-serif;
+    margin-bottom: 5px;
+    font-weight: 500;
 }
