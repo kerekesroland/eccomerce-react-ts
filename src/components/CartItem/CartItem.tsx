@@ -59,12 +59,13 @@ const CartItem: React.FC<IProps> = ({
                 </div>
                 <div className="buttons">
                     <Button
-                        onClick={() => addToCart(product)}
+                        onClick={() => removeFromCart(product)}
                         color="primary"
                         variant="contained"
                     >
-                        +
+                        -
                     </Button>
+
                     <strong
                         style={{
                             fontSize: "1.5rem",
@@ -79,12 +80,13 @@ const CartItem: React.FC<IProps> = ({
                         {cartItem.quantity}
                     </strong>
                     <Button
-                        onClick={() => removeFromCart(product)}
+                        onClick={() => addToCart(product)}
                         color="primary"
                         variant="contained"
                     >
-                        -
+                        +
                     </Button>
+
                     <Button
                         onClick={() => removeAllQuantityFromCart(product)}
                         style={{
