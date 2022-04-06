@@ -1,6 +1,7 @@
 import { Button } from "@mui/material";
 import React from "react";
 import "./styles.css";
+
 type Props = {
     id: string;
     name: string;
@@ -23,7 +24,7 @@ type IProps = {
     removeFromCart: (product: Props) => void;
 };
 
-const Product: React.FC<IProps> = ({ product, addToCart, removeFromCart }) => {
+const Product: React.FC<IProps> = ({ product, addToCart }) => {
     const renderStars = (product: Props) => {
         const stars: any = [];
         for (let i = 0; i < product.ratings; i++) {
@@ -59,20 +60,36 @@ const Product: React.FC<IProps> = ({ product, addToCart, removeFromCart }) => {
                         <p className="product-in-stock">In Stock </p>
                     ) : (
                         <p className="product-out-of-stock">
-                            <b>Not</b> In Stock
+                            <b>Out</b> of Stock
                         </p>
                     )}
 
                     <p className="rating">{renderStars(product)}</p>
                 </div>
-
-                <Button
-                    style={{ position: "relative", top: "3px" }}
-                    onClick={() => addToCart(product)}
-                    variant="contained"
-                >
-                    Add to cart
-                </Button>
+                {product.inStock ? (
+                    <Button
+                        style={{ position: "relative", top: "3px" }}
+                        onClick={() => addToCart(product)}
+                        variant="contained"
+                    >
+                        Add to cart
+                    </Button>
+                ) : (
+                    <Button
+                        style={{
+                            position: "relative",
+                            top: "3px",
+                            color: "white",
+                            backgroundColor: "#1976D2",
+                            opacity: 0.45,
+                        }}
+                        onClick={() => addToCart(product)}
+                        variant="contained"
+                        disabled
+                    >
+                        Add to cart
+                    </Button>
+                )}
             </div>
         </div>
     );
