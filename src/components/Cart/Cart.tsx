@@ -47,23 +47,31 @@ const Cart = () => {
         addToCart: (product: Props) => void;
         removeFromCart: (product: Props) => void;
     };
-
+    console.log(cart.length);
     return (
-        <div className="cart-items-container">
-            {cart?.map((cartItem: IProps["cartItem"]) => (
-                <CartItem
-                    product={cartItem}
-                    key={cartItem.id}
-                    cartItem={cartItem}
-                    products={products}
-                    setProducts={setProducts}
-                    cart={cart}
-                    setCart={setCart}
-                    addToCart={addToCart}
-                    removeFromCart={removeFromCart}
-                />
-            ))}
-        </div>
+        <>
+            {cart.length ? (
+                <div className="cart-items-container">
+                    {cart?.map((cartItem: IProps["cartItem"]) => (
+                        <CartItem
+                            product={cartItem}
+                            key={cartItem.id}
+                            cartItem={cartItem}
+                            products={products}
+                            setProducts={setProducts}
+                            cart={cart}
+                            setCart={setCart}
+                            addToCart={addToCart}
+                            removeFromCart={removeFromCart}
+                        />
+                    ))}
+                </div>
+            ) : (
+                <h1 className="empty-cart">
+                    Cart is empty, try adding some items...
+                </h1>
+            )}
+        </>
     );
 };
 
