@@ -2,22 +2,20 @@ import React from "react";
 import "./styles.css";
 import { Button } from "@mui/material";
 type Props = {
-    cartItem: {
-        id: string;
-        name: string;
-        price: string;
-        image: string;
-        inStock: number;
-        fastDelivery: boolean;
-        ratings: number;
-        quantity: number;
-        isAdded: boolean;
-    };
+    id: string;
+    name: string;
+    price: string;
+    image: string;
+    inStock: number;
+    fastDelivery: boolean;
+    ratings: number;
+    quantity: number;
+    isAdded: boolean;
 };
 
 type IProps = {
-    cartItem: Props["cartItem"];
-    product: Props["cartItem"];
+    cartItem: Props;
+    product: Props;
     products: Props[] | null;
     setProducts: React.Dispatch<React.SetStateAction<Props[] | null>>;
     cart: Props[] | null;
@@ -30,7 +28,14 @@ const CartItem: React.FC<IProps> = ({
     cartItem,
     addToCart,
     removeFromCart,
+    product,
+    cart,
+    setCart,
 }) => {
+    const removeAllQuantityFromCart = (product: Props) => {
+        const newCart = cart?.filter((item: Props) => item.id !== product.id);
+        setCart(newCart!);
+    };
     return (
         <>
             <div className="container">
@@ -51,7 +56,11 @@ const CartItem: React.FC<IProps> = ({
                     </div>
                 </div>
                 <div className="buttons">
-                    <Button color="primary" variant="contained">
+                    <Button
+                        onClick={() => addToCart(product)}
+                        color="primary"
+                        variant="contained"
+                    >
                         +
                     </Button>
                     <strong
@@ -67,10 +76,15 @@ const CartItem: React.FC<IProps> = ({
                     >
                         {cartItem.quantity}
                     </strong>
-                    <Button color="primary" variant="contained">
+                    <Button
+                        onClick={() => removeFromCart(product)}
+                        color="primary"
+                        variant="contained"
+                    >
                         -
                     </Button>
                     <Button
+                        onClick={() => removeAllQuantityFromCart(product)}
                         style={{
                             marginLeft: "25px",
                         }}

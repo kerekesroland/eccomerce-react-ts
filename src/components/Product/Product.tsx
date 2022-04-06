@@ -56,22 +56,10 @@ const Product: React.FC<IProps> = ({ product, addToCart, removeFromCart }) => {
                     )}
                     <p className="rating">{renderStars(product)}</p>
                 </div>
-                {product.isAdded === false ? (
-                    <Button
-                        onClick={() => addToCart(product)}
-                        variant="contained"
-                    >
-                        Add to cart
-                    </Button>
-                ) : (
-                    <Button
-                        onClick={() => removeFromCart(product)}
-                        variant="contained"
-                        color="error"
-                    >
-                        Remove From Cart
-                    </Button>
-                )}
+
+                <Button onClick={() => addToCart(product)} variant="contained">
+                    Add to cart
+                </Button>
             </div>
         </div>
     );
