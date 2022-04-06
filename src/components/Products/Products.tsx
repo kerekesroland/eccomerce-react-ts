@@ -11,6 +11,7 @@ const Products = () => {
         inStock: number;
         fastDelivery: boolean;
         ratings: number;
+        quantity: number;
     };
 
     return (

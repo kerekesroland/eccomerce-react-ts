@@ -9,6 +9,7 @@ type Props = {
     inStock: number;
     fastDelivery: boolean;
     ratings: number;
+    quantity: number;
 };
 
 type IProps = {
@@ -29,7 +30,18 @@ const Product: React.FC<IProps> = ({ product, cart, setCart }) => {
     };
 
     const addToCart = (product: Props) => {
-        setCart((prevCart) => [...prevCart!, product]);
+        const item = cart?.find((i) => i.id === product.id);
+        if (item) {
+            setCart(
+                cart!.map((i) =>
+                    i.id === product.id
+                        ? { ...item, quantity: item.quantity + 1 }
+                        : i
+                )
+            );
+        } else {
+            setCart([...cart!, { ...product, quantity: 1 }]);
+        }
     };
 
     return (

@@ -14,11 +14,22 @@ type product = {
     ratings: number;
 };
 
+type product_and_cart = {
+    id: string;
+    name: string;
+    price: string;
+    image: string;
+    inStock: number;
+    fastDelivery: boolean;
+    ratings: number;
+    quantity: number;
+};
+
 type productsType = {
     products: product[] | null;
     setProducts: React.Dispatch<React.SetStateAction<product[] | null>>;
-    cart: product[] | null;
-    setCart: React.Dispatch<React.SetStateAction<product[] | null>>;
+    cart: product_and_cart[] | null;
+    setCart: React.Dispatch<React.SetStateAction<product_and_cart[] | null>>;
 };
 
 export const Context = createContext<productsType | null>(null);
@@ -35,7 +46,7 @@ const fakeProducts = [...Array(20)].map(() => ({
 
 const ProductContext = ({ children }: Props) => {
     const [products, setProducts] = useState<product[] | null>(fakeProducts);
-    const [cart, setCart] = useState<product[] | null>([]);
+    const [cart, setCart] = useState<product_and_cart[] | null>([]);
 
     return (
         <Context.Provider value={{ cart, setCart, products, setProducts }}>

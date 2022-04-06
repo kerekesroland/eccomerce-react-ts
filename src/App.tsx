@@ -5,6 +5,7 @@ import Products from "./components/Products/Products";
 import "./App.css";
 import Cart from "./components/Cart/Cart";
 import ProductContext from "./context/ProductContext";
+import Checkout from "./Checkout/Checkout";
 const App = () => {
     return (
         <Router>
@@ -13,6 +14,7 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<Products />} />
                     <Route path="/cart" element={<Cart />}></Route>
+                    <Route path="/checkout" element={<Checkout />}></Route>
                 </Routes>
             </ProductContext>
         </Router>

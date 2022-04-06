@@ -1,5 +1,7 @@
 import React, { useContext } from "react";
 import { Context } from "../../context/ProductContext";
+import CartItem from "../CartItem/CartItem";
+import "./styles.css";
 type Props = {
     id: string;
     name: string;
@@ -8,23 +10,15 @@ type Props = {
     inStock: number;
     fastDelivery: boolean;
     ratings: number;
-};
-
-type IProps = {
-    product: Props;
-    products: Props[] | null;
-    setProducts: React.Dispatch<React.SetStateAction<Props[] | null>>;
-    cart: Props[] | null;
-    setCart: React.Dispatch<React.SetStateAction<Props[] | null>>;
+    quantity: number;
 };
 
 const Cart = () => {
-    const { product, products, setProducts, cart, setCart }: any =
-        useContext(Context);
+    const { cart }: any = useContext(Context);
     return (
-        <div>
+        <div className="cart-items-container">
             {cart?.map((cartItem: Props) => (
-                <div key={cartItem.id}>{cartItem.name}</div>
+                <CartItem key={cartItem.id} cartItem={cartItem} />
             ))}
         </div>
     );
