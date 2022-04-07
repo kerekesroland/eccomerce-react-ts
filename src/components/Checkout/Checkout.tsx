@@ -1,44 +1,56 @@
-import React, { useContext } from "react";
+import React, { useRef } from "react";
 import "./styles.css";
-import { Context } from "../../context/ProductContext";
 import { Button } from "@mui/material";
 
 const Checkout = () => {
-    const {
-        products,
-        setProducts,
-        cart,
-        setCart,
-        addToCart,
-        removeFromCart,
-    }: any = useContext(Context);
+    const nameRef = useRef<HTMLInputElement>(null);
+    const emailRef = useRef<HTMLInputElement>(null);
+    const addressRef = useRef<HTMLInputElement>(null);
+    const cityRef = useRef<HTMLInputElement>(null);
+    const zipRef = useRef<HTMLInputElement>(null);
+    const stateRef = useRef<HTMLInputElement>(null);
+    const cardNameRef = useRef<HTMLInputElement>(null);
+    const cardNumberRef = useRef<HTMLInputElement>(null);
+    const expMonthRef = useRef<HTMLInputElement>(null);
+    const expYearRef = useRef<HTMLInputElement>(null);
+    const cvvRef = useRef<HTMLInputElement>(null);
+    const handleSubmit = (e: React.SyntheticEvent) => {
+        e.preventDefault();
+    };
 
     //Todo befejezni a Checkout menüt
     return (
         <>
             <div className="form-container">
-                <form className="checkout-form">
+                <form
+                    onSubmit={(e: React.SyntheticEvent) => handleSubmit(e)}
+                    className="checkout-form"
+                >
                     <div className="address-inputs">
                         <label>Full Name</label>
                         <input
-                            className="form-input"
+                            ref={nameRef}
+                            className="form-input fullName"
                             type="text"
                             placeholder="Roland san"
                         />
                         <label>Email</label>
                         <input
-                            className="form-input"
+                            ref={emailRef}
+                            className="form-input email"
                             type="email"
                             placeholder="rolca@gmail.com"
                         />
                         <label>Address</label>
                         <input
-                            className="form-input"
+                            ref={addressRef}
+                            className="form-input address"
                             type="text"
                             placeholder="Arany Janos street 65"
                         />
                         <label>City</label>
                         <input
+                            ref={cityRef}
                             className="form-input"
                             type="text"
                             placeholder="Miskolc"
@@ -49,6 +61,7 @@ const Checkout = () => {
                                 Zip code
                             </label>
                             <input
+                                ref={zipRef}
                                 className="form-input zip"
                                 type="text"
                                 placeholder="3711"
@@ -58,6 +71,7 @@ const Checkout = () => {
                                 State
                             </label>
                             <input
+                                ref={stateRef}
                                 className="form-input state"
                                 type="text"
                                 placeholder="State"
@@ -67,18 +81,21 @@ const Checkout = () => {
                     <div className="billing-inputs">
                         <label>Name on Card</label>
                         <input
+                            ref={cardNameRef}
                             className="form-input"
                             type="text"
                             placeholder="Kerekes Roland"
                         />
                         <label>Credit card number</label>
                         <input
+                            ref={cardNumberRef}
                             className="form-input"
-                            type="email"
+                            type="text"
                             placeholder="1123-5525-4128-4152"
                         />
                         <label>Exp Month</label>
                         <input
+                            ref={expMonthRef}
                             className="form-input"
                             type="number"
                             min={1}
@@ -89,20 +106,23 @@ const Checkout = () => {
                                 Exp Year
                             </label>
                             <input
+                                ref={expYearRef}
                                 className="form-input exp"
                                 type="text"
-                                placeholder="3711"
+                                placeholder="2022"
                             />
 
                             <label className="form-label label-cvv">CVV</label>
                             <input
+                                ref={cvvRef}
                                 className="form-input cvv"
-                                type="text"
+                                type="password"
                                 placeholder="State"
                             />
                         </div>
                     </div>
                     <Button
+                        type="submit"
                         style={{
                             position: "absolute",
                             bottom: "1.5rem",
