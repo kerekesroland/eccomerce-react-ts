@@ -1,0 +1,143 @@
+.form-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+    height: 50vh;
+    position: relative;
+    top: 14rem;
+    left: 8.5rem;
+}
+
+.checkout-form {
+    min-width: 750px;
+    max-height: 600px;
+    position: absolute;
+    box-shadow: 4px 4px 4px 4px rgba(0, 0, 0, 0.2);
+    border-radius: 30px;
+}
+
+.address-inputs > input {
+    max-width: 300px;
+    max-height: 15px;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #282d31;
+}
+
+.address-inputs {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: 2rem;
+    gap: 1rem;
+}
+
+.billing-inputs {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    bottom: 24.3rem;
+    left: 23.5rem;
+    gap: 1rem;
+}
+
+.billing-inputs > input {
+    max-width: 300px;
+    max-height: 15px;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #282d31;
+}
+
+.state-zip {
+    display: flex;
+    position: relative;
+    top: 2rem;
+    left: -4.2rem;
+}
+
+.state-zip input {
+    width: 130px;
+}
+
+.form-label {
+    font-size: 1.2rem;
+    color: #282d31;
+    position: inherit;
+    left: 6rem;
+    bottom: 2rem;
+}
+
+label {
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #282d31;
+    position: inherit;
+    left: 1.5rem;
+}
+
+.form-input {
+    max-width: 250px;
+    max-height: 15px;
+    margin-right: 1.5rem;
+    margin-left: 1.5rem;
+    padding: 0.75rem;
+    border-radius: 0.5rem;
+    border: 1px solid #282d31;
+}
+
+.state {
+    position: relative;
+    left: -4.5rem;
+}
+
+.input-state {
+    max-width: 250px;
+    max-height: 15px;
+}
+
+.label-state {
+    position: relative;
+    left: -0.5rem;
+}
+
+.label-zip {
+    position: relative;
+    left: 5.8rem;
+}
+
+.exp-cvv {
+    display: flex;
+    position: relative;
+    top: 2rem;
+    left: -5rem;
+    gap: 0.65rem;
+}
+
+.label-exp {
+    position: relative;
+    left: 6.6rem;
+}
+
+.label-cvv {
+    position: relative;
+    left: -1.1rem;
+}
+
+.cvv {
+    position: relative;
+    left: -5.8rem;
+}
+
+.exp {
+    width: 8rem;
+}
+
+.cvv {
+    width: 8rem;
+}

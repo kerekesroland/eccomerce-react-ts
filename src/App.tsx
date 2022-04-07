@@ -5,7 +5,7 @@ import Products from "./components/Products/Products";
 import "./App.css";
 import Cart from "./components/Cart/Cart";
 import ProductContext from "./context/ProductContext";
-import Checkout from "./Checkout/Checkout";
+import Checkout from "./components/Checkout/Checkout";
 const App = () => {
     return (
         <Router>

@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../../context/ProductContext";
 import CartItem from "../CartItem/CartItem";
 import "./styles.css";
+import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
 
 const Cart = () => {
@@ -109,33 +110,38 @@ const Cart = () => {
                             </div>
                         </div>
 
-                        <Button
-                            style={{
-                                padding: "10px",
-                                width: "90%",
-                                borderRadius: "10px",
-                                position: "absolute",
-                                bottom: "6rem",
-                            }}
-                            variant="contained"
-                        >
-                            Proceed to Checkout
-                        </Button>
-
-                        <Button
-                            style={{
-                                padding: "10px",
-                                width: "90%",
-                                borderRadius: "10px",
-                                position: "absolute",
-                                bottom: "2rem",
-                                color: "#282D31",
-                                borderColor: "#ccc",
-                            }}
-                            variant="outlined"
-                        >
-                            Continue Shopping
-                        </Button>
+                        <Link to="/checkout">
+                            <Button
+                                style={{
+                                    padding: "10px",
+                                    width: "90%",
+                                    borderRadius: "10px",
+                                    position: "absolute",
+                                    bottom: "6rem",
+                                    left: "1.3rem",
+                                }}
+                                variant="contained"
+                            >
+                                Proceed to Checkout
+                            </Button>
+                        </Link>
+                        <Link to="/">
+                            <Button
+                                style={{
+                                    padding: "10px",
+                                    width: "90%",
+                                    borderRadius: "10px",
+                                    position: "absolute",
+                                    bottom: "2rem",
+                                    color: "#282D31",
+                                    borderColor: "#ccc",
+                                    left: "1.3rem",
+                                }}
+                                variant="outlined"
+                            >
+                                Continue Shopping
+                            </Button>
+                        </Link>
                     </div>
                 </>
             ) : (
