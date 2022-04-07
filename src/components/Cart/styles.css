@@ -32,3 +32,142 @@
     font-size: 2rem;
     color: #282d31;
 }
+
+.cart-title {
+    font-family: "Poppins", sans-serif;
+    position: relative;
+    top: 1.25rem;
+    font-size: 1.75rem;
+    color: #282d31;
+}
+
+.cart-total-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 25%;
+    bottom: 25%;
+    left: 60%;
+    height: 22rem;
+    margin-top: 2rem;
+    box-shadow: 2px 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+@media (max-width: 768px) {
+    .cart-total-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        position: relative;
+        left: 25%;
+        top: 3.5rem;
+        min-width: 50%;
+        min-height: 50%;
+        margin-top: 10rem;
+    }
+    .prices-container {
+        display: flex;
+        flex-direction: column;
+        width: 50%;
+        position: inherit;
+        margin-left: 2rem;
+        gap: 1rem;
+    }
+}
+
+.prices-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    position: inherit;
+    top: 2rem;
+    margin-left: 2rem;
+    gap: 1rem;
+}
+
+.subtotal-container {
+    display: flex;
+    width: 90%;
+    height: fit-content;
+}
+
+.subtotal-container > .subtotal {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    color: #282d31;
+}
+
+.subtotal-container > .subtotal-price {
+    display: flex;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    color: #282d31;
+    justify-content: flex-end;
+}
+
+.delivery-container {
+    display: flex;
+    width: 90%;
+    border-bottom: 1px solid #ccc;
+}
+
+.delivery-container > .delivery {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    color: #282d31;
+}
+
+.delivery-container > .delivery-price {
+    display: flex;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    color: #282d31;
+    justify-content: flex-end;
+}
+
+.tax-container {
+    display: flex;
+    width: 90%;
+}
+
+.tax-container > .tax {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    color: #282d31;
+}
+
+.tax-container > .tax-price {
+    display: flex;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    color: #282d31;
+    justify-content: flex-end;
+}
+
+.total-container {
+    display: flex;
+    width: 90%;
+}
+
+.total-container > .total {
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    color: #282d31;
+    font-weight: 600;
+}
+
+.total-container > .total-price {
+    display: flex;
+    width: 100%;
+    font-family: "Poppins", sans-serif;
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #282d31;
+    justify-content: flex-end;
+}

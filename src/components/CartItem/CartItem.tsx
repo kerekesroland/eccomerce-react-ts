@@ -45,7 +45,7 @@ const CartItem: React.FC<IProps> = ({
                     alt={cartItem.name}
                 />
                 <div className="cart-item-container">
-                    <div className="title">{cartItem.name}</div>
+                    <div className="cart-item-title">{cartItem.name}</div>
                     <div className="details-container">
                         <span className="price">${cartItem.price} | </span>
                         {cartItem.inStock > 0 ? (
@@ -73,8 +73,8 @@ const CartItem: React.FC<IProps> = ({
                             fontFamily: "Poppins, sans-serif",
                             position: "relative",
                             top: "5px",
-                            paddingLeft: "10px",
-                            paddingRight: "10px",
+                            paddingLeft: "2%",
+                            paddingRight: "2%",
                         }}
                     >
                         {cartItem.quantity}
@@ -83,15 +83,14 @@ const CartItem: React.FC<IProps> = ({
                         onClick={() => addToCart(product)}
                         color="primary"
                         variant="contained"
+                        style={{ marginRight: "2%" }}
                     >
                         +
                     </Button>
 
                     <Button
                         onClick={() => removeAllQuantityFromCart(product)}
-                        style={{
-                            marginLeft: "25px",
-                        }}
+                        style={{}}
                         color="error"
                         variant="contained"
                     >
