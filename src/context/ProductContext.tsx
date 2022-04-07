@@ -34,6 +34,8 @@ type productsType = {
     setCart: React.Dispatch<React.SetStateAction<product_and_cart[] | null>>;
     addToCart: (product: product) => void;
     removeFromCart: (product: product) => void;
+    filterer: product[] | null;
+    setFilterer: React.Dispatch<React.SetStateAction<product[] | null>>;
 };
 
 export const Context = createContext<productsType | null>(null);
@@ -52,6 +54,7 @@ const fakeProducts = [...Array(20)].map(() => ({
 const ProductContext = ({ children }: Props) => {
     const [products, setProducts] = useState<product[] | null>(fakeProducts);
     const [cart, setCart] = useState<product_and_cart[] | null>([]);
+    const [filterer, setFilterer] = useState<product[] | null>(products);
     const addToCart = (product: product) => {
         const item = cart?.find((i) => i.id === product.id);
         if (item) {
@@ -93,6 +96,8 @@ const ProductContext = ({ children }: Props) => {
                 setProducts,
                 addToCart,
                 removeFromCart,
+                filterer,
+                setFilterer,
             }}
         >
             {children}

@@ -2,33 +2,22 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useContext } from "react";
 import { Context } from "../../context/ProductContext";
-import Badge, { BadgeProps } from "@mui/material/Badge";
-import { styled } from "@mui/material/styles";
+import Badge from "@mui/material/Badge";
 import IconButton from "@mui/material/IconButton";
 import ShoppingCartIcon from "@material-ui/icons/ShoppingCart";
 import "./index.css";
 
-const StyledBadge = styled(Badge)<BadgeProps>(({ theme }: any) => ({
-    "& .MuiBadge-badge": {
-        right: -3,
-        top: 13,
-        border: `2px solid ${theme.palette.background.paper}`,
-        padding: "0 4px",
-    },
-}));
-
-export function CustomizedBadges() {
-    return (
-        <IconButton aria-label="cart">
-            <StyledBadge badgeContent={4} color="secondary">
-                <ShoppingCartIcon />
-            </StyledBadge>
-        </IconButton>
-    );
-}
-
 const Navbar = () => {
-    const { cart }: any = useContext(Context);
+    const { cart, products, setFilterer }: any = useContext(Context);
+
+    const handleSortBySearch = (e: any) => {
+        setFilterer(
+            products.filter((m: any) =>
+                m.name.toLowerCase().includes(e.target.value.toLowerCase())
+            )
+        );
+    };
+
     return (
         <nav className="nav-container">
             <ul className="nav-items">
@@ -38,7 +27,11 @@ const Navbar = () => {
                     </Link>
                 </li>
                 <li className="nav-item search-bar">
-                    <input type="text" placeholder="Search product" />
+                    <input
+                        type="text"
+                        placeholder="Search product"
+                        onChange={(e: any) => handleSortBySearch(e)}
+                    />
                 </li>
                 <li className="nav-item">
                     <Link to="/cart">
