@@ -2,6 +2,7 @@ import { Button } from "@mui/material";
 import React, { useContext } from "react";
 import { Context } from "../../context/ProductContext";
 import Product from "../Product/Product";
+import "./styles.css";
 const Products = () => {
     const {
         products,
@@ -41,23 +42,23 @@ const Products = () => {
         <>
             <div className="products-btn-container">
                 <Button
-                    onClick={() => handleSortFastDelivery()}
-                    style={{ marginTop: "5rem", marginLeft: "31rem" }}
+                    className="sort-btn"
                     variant="contained"
+                    onClick={() => handleSortFastDelivery()}
                 >
                     fast delivery
                 </Button>
                 <Button
-                    onClick={() => handleSortByStock()}
-                    style={{ marginTop: "5rem", marginLeft: "5rem" }}
                     variant="contained"
+                    className="sort-btn"
+                    onClick={() => handleSortByStock()}
                 >
                     In Stock
                 </Button>
                 <Button
-                    onClick={() => handleSortByRating()}
-                    style={{ marginTop: "5rem", marginLeft: "5rem" }}
                     variant="contained"
+                    className="sort-btn"
+                    onClick={() => handleSortByRating()}
                 >
                     High ratings
                 </Button>

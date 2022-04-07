@@ -1,0 +1,23 @@
+.products-btn-container {
+    display: flex;
+    width: 600px;
+    position: relative;
+    margin: 0 auto;
+    top: 5rem;
+    gap: 1rem;
+    justify-content: space-between;
+}
+
+.sort-btn {
+    z-index: 998;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+    color: #000;
+    font-size: 1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
+}
