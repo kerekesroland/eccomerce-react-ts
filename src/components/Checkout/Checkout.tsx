@@ -1,10 +1,10 @@
-import React, { SetStateAction, useContext, useRef, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import "./styles.css";
 import { Context } from "../../context/ProductContext";
 import { Button } from "@mui/material";
 
 const Checkout = () => {
-    const { cart }: any = useContext(Context);
+    const { cart, setCart }: any = useContext(Context);
 
     const nameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
@@ -22,27 +22,32 @@ const Checkout = () => {
 
     const [order, setOrder] = useState<anyArray>([]);
 
+    let inputs: any = {};
+
     const handleSubmit = (e: any) => {
         e.preventDefault();
-        console.log(order);
-        e.target.reset();
+        if (inputs) {
+            console.log(order);
+            setCart([]);
+            e.target.reset();
+        }
     };
 
-    const setCheckoutDetails = async () => {
-        setOrder([
-            ...cart,
-            nameRef?.current?.value,
-            emailRef?.current?.value,
-            addressRef?.current?.value,
-            cityRef?.current?.value,
-            zipRef?.current?.value,
-            stateRef?.current?.value,
-            cardNameRef?.current?.value,
-            cardNumberRef?.current?.value,
-            expMonthRef?.current?.value,
-            expYearRef?.current?.value,
-            cvvRef?.current?.value,
-        ]);
+    const setCheckoutDetails = () => {
+        inputs = {
+            name: nameRef?.current?.value,
+            email: emailRef?.current?.value,
+            address: addressRef?.current?.value,
+            city: cityRef?.current?.value,
+            zip: zipRef?.current?.value,
+            state: stateRef?.current?.value,
+            cardName: cardNameRef?.current?.value,
+            cardNumber: cardNumberRef?.current?.value,
+            expMonth: expMonthRef?.current?.value,
+            expYear: expYearRef?.current?.value,
+            cvv: cvvRef?.current?.value,
+        };
+        setOrder([...cart, inputs]);
     };
 
     //Todo befejezni a Checkout menüt
