@@ -1,8 +1,11 @@
-import React, { useRef } from "react";
+import React, { SetStateAction, useContext, useRef, useState } from "react";
 import "./styles.css";
+import { Context } from "../../context/ProductContext";
 import { Button } from "@mui/material";
 
 const Checkout = () => {
+    const { cart }: any = useContext(Context);
+
     const nameRef = useRef<HTMLInputElement>(null);
     const emailRef = useRef<HTMLInputElement>(null);
     const addressRef = useRef<HTMLInputElement>(null);
@@ -14,8 +17,32 @@ const Checkout = () => {
     const expMonthRef = useRef<HTMLInputElement>(null);
     const expYearRef = useRef<HTMLInputElement>(null);
     const cvvRef = useRef<HTMLInputElement>(null);
-    const handleSubmit = (e: React.SyntheticEvent) => {
+
+    type anyArray = Array<number | string | boolean | undefined | null>;
+
+    const [order, setOrder] = useState<anyArray>([]);
+
+    const handleSubmit = (e: any) => {
         e.preventDefault();
+        console.log(order);
+        e.target.reset();
+    };
+
+    const setCheckoutDetails = async () => {
+        setOrder([
+            ...cart,
+            nameRef?.current?.value,
+            emailRef?.current?.value,
+            addressRef?.current?.value,
+            cityRef?.current?.value,
+            zipRef?.current?.value,
+            stateRef?.current?.value,
+            cardNameRef?.current?.value,
+            cardNumberRef?.current?.value,
+            expMonthRef?.current?.value,
+            expYearRef?.current?.value,
+            cvvRef?.current?.value,
+        ]);
     };
 
     //Todo befejezni a Checkout menüt
@@ -23,7 +50,7 @@ const Checkout = () => {
         <>
             <div className="form-container">
                 <form
-                    onSubmit={(e: React.SyntheticEvent) => handleSubmit(e)}
+                    onSubmit={(e: any) => handleSubmit(e)}
                     className="checkout-form"
                 >
                     <div className="address-inputs">
@@ -122,6 +149,7 @@ const Checkout = () => {
                         </div>
                     </div>
                     <Button
+                        onClick={() => setCheckoutDetails()}
                         type="submit"
                         style={{
                             position: "absolute",

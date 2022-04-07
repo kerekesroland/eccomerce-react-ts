@@ -55,9 +55,6 @@ const Cart = () => {
         0
     );
 
-    if (cart) {
-        console.log(priceOfItemsInCart);
-    }
     const taxes = priceOfItemsInCart * 0.27;
     const shipping = priceOfItemsInCart > 5000 ? 0 : 100;
     const total = priceOfItemsInCart + taxes + shipping;
