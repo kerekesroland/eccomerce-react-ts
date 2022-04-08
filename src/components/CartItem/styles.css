@@ -68,7 +68,7 @@
     justify-content: space-between;
 }
 
-@media (min-width: 320px) and (max-width: 480px) {
+@media (min-width: 320px) and (max-width: 600px) {
     .buttons {
         position: absolute;
         left: -15px;
@@ -94,9 +94,8 @@
 
 @media (min-width: 600px) {
     .buttons {
-        position: relative;
-        left: 3rem;
-        bottom: 22px;
+        position: absolute;
+        left: 50%;
         width: 45%;
         height: 2.6rem;
         display: flex;
@@ -112,6 +111,13 @@
         top: 2rem;
         border-bottom: 1px solid #ccc;
         border-top: 1px solid #ccc;
+    }
+
+    .btn-remove-all {
+        position: absolute;
+        top: 100%;
+        left: -51%;
+        height: 40px;
     }
 }
 
