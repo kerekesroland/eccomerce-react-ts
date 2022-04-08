@@ -89,8 +89,8 @@ const CartItem: React.FC<IProps> = ({
                     </Button>
 
                     <Button
+                        className="btn-remove-all"
                         onClick={() => removeAllQuantityFromCart(product)}
-                        style={{}}
                         color="error"
                         variant="contained"
                     >

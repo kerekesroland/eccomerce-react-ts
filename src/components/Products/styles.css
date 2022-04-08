@@ -1,11 +1,21 @@
 .products-btn-container {
     display: flex;
     width: 600px;
+    height: 100%;
     position: relative;
     margin: 0 auto;
     top: 5rem;
     gap: 1rem;
     justify-content: space-between;
+}
+
+@media (min-width: 320px) {
+    .products-btn-container {
+        width: 80%;
+        height: 25px;
+        flex-direction: row;
+        gap: 0.5rem;
+    }
 }
 
 .sort-btn {
