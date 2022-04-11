@@ -1,30 +1,24 @@
 import React from "react";
 import "./styles.css";
 import { Button } from "@mui/material";
+import { product_and_cartType } from "../../interfaces/product_and_cartType";
+
 type Props = {
-    id: string;
-    name: string;
-    price: string;
-    image: string;
-    inStock: number;
-    fastDelivery: boolean;
-    ratings: number;
-    quantity: number;
-    isAdded: boolean;
+    cartItem: product_and_cartType;
+    product: product_and_cartType;
+    products: product_and_cartType[] | null;
+    setProducts: React.Dispatch<
+        React.SetStateAction<product_and_cartType[] | null>
+    >;
+    cart: product_and_cartType[] | null;
+    setCart: React.Dispatch<
+        React.SetStateAction<product_and_cartType[] | null>
+    >;
+    addToCart: (product: product_and_cartType) => void;
+    removeFromCart: (product: product_and_cartType) => void;
 };
 
-type IProps = {
-    cartItem: Props;
-    product: Props;
-    products: Props[] | null;
-    setProducts: React.Dispatch<React.SetStateAction<Props[] | null>>;
-    cart: Props[] | null;
-    setCart: React.Dispatch<React.SetStateAction<Props[] | null>>;
-    addToCart: (product: Props) => void;
-    removeFromCart: (product: Props) => void;
-};
-
-const CartItem: React.FC<IProps> = ({
+const CartItem: React.FC<Props> = ({
     cartItem,
     addToCart,
     removeFromCart,
@@ -32,8 +26,10 @@ const CartItem: React.FC<IProps> = ({
     cart,
     setCart,
 }) => {
-    const removeAllQuantityFromCart = (product: Props) => {
-        const newCart = cart?.filter((item: Props) => item.id !== product.id);
+    const removeAllQuantityFromCart = (product: product_and_cartType) => {
+        const newCart = cart?.filter(
+            (item: product_and_cartType) => item.id !== product.id
+        );
         setCart(newCart!);
     };
     return (

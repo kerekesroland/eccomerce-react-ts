@@ -4,7 +4,7 @@ import CartItem from "../CartItem/CartItem";
 import "./styles.css";
 import { Link } from "react-router-dom";
 import { Button } from "@mui/material";
-
+import { product_and_cartType } from "../../interfaces/product_and_cartType";
 const Cart = () => {
     const {
         products,
@@ -16,42 +16,23 @@ const Cart = () => {
     }: any = useContext(Context);
 
     type Props = {
-        id: string;
-        name: string;
-        price: string;
-        image: string;
-        inStock: number;
-        fastDelivery: boolean;
-        ratings: number;
-        quantity: number;
-        isAdded: boolean;
-    };
-
-    type cartItemProp = {
-        id: string;
-        name: string;
-        price: string;
-        image: string;
-        inStock: number;
-        fastDelivery: boolean;
-        ratings: number;
-        quantity: number;
-        isAdded: boolean;
-    };
-
-    type IProps = {
-        cartItem: cartItemProp;
-        product: Props;
-        products: Props[] | null;
-        setProducts: React.Dispatch<React.SetStateAction<Props[] | null>>;
-        cart: Props[] | null;
-        setCart: React.Dispatch<React.SetStateAction<Props[] | null>>;
-        addToCart: (product: Props) => void;
-        removeFromCart: (product: Props) => void;
+        cartItem: product_and_cartType;
+        product: product_and_cartType;
+        products: product_and_cartType[] | null;
+        setProducts: React.Dispatch<
+            React.SetStateAction<product_and_cartType[] | null>
+        >;
+        cart: product_and_cartType[] | null;
+        setCart: React.Dispatch<
+            React.SetStateAction<product_and_cartType[] | null>
+        >;
+        addToCart: (product: product_and_cartType) => void;
+        removeFromCart: (product: product_and_cartType) => void;
     };
 
     const priceOfItemsInCart = cart.reduce(
-        (acc: number, item: Props) => acc + Number(item.price) * item.quantity,
+        (acc: number, item: product_and_cartType) =>
+            acc + Number(item.price) * item.quantity,
         0
     );
 
@@ -65,7 +46,7 @@ const Cart = () => {
                 <>
                     <div className="cart-items-container">
                         <h1 className="cart-title">Cart</h1>
-                        {cart?.map((cartItem: IProps["cartItem"]) => (
+                        {cart?.map((cartItem: Props["cartItem"]) => (
                             <CartItem
                                 product={cartItem}
                                 key={cartItem.id}

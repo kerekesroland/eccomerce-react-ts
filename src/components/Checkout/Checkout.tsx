@@ -18,9 +18,7 @@ const Checkout = () => {
     const expYearRef = useRef<HTMLInputElement>(null);
     const cvvRef = useRef<HTMLInputElement>(null);
 
-    type anyArray = Array<number | string | boolean | undefined | null>;
-
-    const [order, setOrder] = useState<anyArray>([]);
+    const [order, setOrder] = useState<Array<any>>([]);
 
     let inputs: any = {};
 
@@ -50,7 +48,7 @@ const Checkout = () => {
         setOrder([...cart, inputs]);
     };
 
-    //Todo befejezni a Checkout menüt
+    //Todo ujrairni a checkout menut
     return (
         <>
             <div className="form-container">

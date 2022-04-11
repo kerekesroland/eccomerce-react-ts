@@ -1,41 +1,11 @@
 import React, { createContext, useState } from "react";
 import { faker } from "@faker-js/faker";
+import { productType } from "../interfaces/productType";
+import { product_and_cartType } from "../interfaces/product_and_cartType";
+import { productsType } from "../interfaces/productsType";
+
 type Props = {
     children: React.ReactNode;
-};
-
-type product = {
-    id: string;
-    name: string;
-    price: string;
-    image: string;
-    inStock: number;
-    fastDelivery: boolean;
-    ratings: number;
-    isAdded: boolean;
-};
-
-type product_and_cart = {
-    id: string;
-    name: string;
-    price: string;
-    image: string;
-    inStock: number;
-    fastDelivery: boolean;
-    ratings: number;
-    quantity: number;
-    isAdded: boolean;
-};
-
-type productsType = {
-    products: product[] | null;
-    setProducts: React.Dispatch<React.SetStateAction<product[] | null>>;
-    cart: product_and_cart[] | null;
-    setCart: React.Dispatch<React.SetStateAction<product_and_cart[] | null>>;
-    addToCart: (product: product) => void;
-    removeFromCart: (product: product) => void;
-    filterer: product[] | null;
-    setFilterer: React.Dispatch<React.SetStateAction<product[] | null>>;
 };
 
 export const Context = createContext<productsType | null>(null);
@@ -52,10 +22,13 @@ const fakeProducts = [...Array(20)].map(() => ({
 }));
 
 const ProductContext = ({ children }: Props) => {
-    const [products, setProducts] = useState<product[] | null>(fakeProducts);
-    const [cart, setCart] = useState<product_and_cart[] | null>([]);
-    const [filterer, setFilterer] = useState<product[] | null>(products);
-    const addToCart = (product: product) => {
+    const [products, setProducts] = useState<productType[] | null>(
+        fakeProducts
+    );
+    const [cart, setCart] = useState<product_and_cartType[] | null>([]);
+    const [filterer, setFilterer] = useState<productType[] | null>(products);
+
+    const addToCart = (product: productType) => {
         const item = cart?.find((i) => i.id === product.id);
         if (item) {
             setCart(
@@ -71,7 +44,7 @@ const ProductContext = ({ children }: Props) => {
         product.isAdded = true;
     };
 
-    const removeFromCart = (product: product) => {
+    const removeFromCart = (product: productType) => {
         const item = cart?.find((i) => i.id === product.id);
         if (item?.quantity === 1) {
             setCart(cart!.filter((i) => i.id !== product.id));

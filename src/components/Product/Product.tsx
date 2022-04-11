@@ -1,31 +1,24 @@
 import { Button } from "@mui/material";
 import React from "react";
 import "./styles.css";
+import { product_and_cartType } from "../../interfaces/product_and_cartType";
 
 type Props = {
-    id: string;
-    name: string;
-    price: string;
-    image: string;
-    inStock: number;
-    fastDelivery: boolean;
-    ratings: number;
-    quantity: number;
-    isAdded: boolean;
+    product: product_and_cartType;
+    products: product_and_cartType[] | null;
+    setProducts: React.Dispatch<
+        React.SetStateAction<product_and_cartType[] | null>
+    >;
+    cart: product_and_cartType[] | null;
+    setCart: React.Dispatch<
+        React.SetStateAction<product_and_cartType[] | null>
+    >;
+    addToCart: (product: product_and_cartType) => void;
+    removeFromCart: (product: product_and_cartType) => void;
 };
 
-type IProps = {
-    product: Props;
-    products: Props[] | null;
-    setProducts: React.Dispatch<React.SetStateAction<Props[] | null>>;
-    cart: Props[] | null;
-    setCart: React.Dispatch<React.SetStateAction<Props[] | null>>;
-    addToCart: (product: Props) => void;
-    removeFromCart: (product: Props) => void;
-};
-
-const Product: React.FC<IProps> = ({ product, addToCart }) => {
-    const renderStars = (product: Props) => {
+const Product: React.FC<Props> = ({ product, addToCart }) => {
+    const renderStars = (product: product_and_cartType) => {
         const stars: any = [];
         for (let i = 0; i < product.ratings; i++) {
             stars.push("⭐");

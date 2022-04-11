@@ -1,7 +1,8 @@
 import { Button } from "@mui/material";
-import React, { useContext } from "react";
+import { useContext } from "react";
 import { Context } from "../../context/ProductContext";
 import Product from "../Product/Product";
+import { product_and_cartType } from "../../interfaces/product_and_cartType";
 import "./styles.css";
 const Products = () => {
     const {
@@ -14,17 +15,6 @@ const Products = () => {
         filterer,
         setFilterer,
     }: any = useContext(Context);
-    type product = {
-        id: string;
-        name: string;
-        price: string;
-        image: string;
-        inStock: number;
-        fastDelivery: boolean;
-        ratings: number;
-        quantity: number;
-        isAdded: boolean;
-    };
 
     const handleSortByStock = () => {
         setFilterer(products.filter((m: any) => m.inStock > 0));
@@ -34,8 +24,12 @@ const Products = () => {
         setFilterer(products.filter((m: any) => m.fastDelivery));
     };
 
-    const handleSortByRating = () => {
-        setFilterer(products.filter((m: any) => m.ratings > 3));
+    // const handleSortByRating = () => {
+    //     setFilterer(products.filter((m: any) => m.ratings > 3));
+    // };
+
+    const handleSortAll = () => {
+        setFilterer(products);
     };
 
     return (
@@ -51,20 +45,20 @@ const Products = () => {
                 <Button
                     variant="contained"
                     className="sort-btn"
-                    onClick={() => handleSortByStock()}
+                    onClick={() => handleSortAll()}
                 >
-                    In Stock
+                    All products
                 </Button>
                 <Button
                     variant="contained"
                     className="sort-btn"
-                    onClick={() => handleSortByRating()}
+                    onClick={() => handleSortByStock()}
                 >
-                    High ratings
+                    In Stock
                 </Button>
             </div>
             <div className="grid-container">
-                {filterer.map((product: product) => (
+                {filterer.map((product: product_and_cartType) => (
                     <Product
                         addToCart={addToCart}
                         removeFromCart={removeFromCart}
